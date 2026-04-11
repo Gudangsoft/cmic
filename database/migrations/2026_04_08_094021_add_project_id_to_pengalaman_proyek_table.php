@@ -21,6 +21,8 @@ return new class extends Migration
     {
         Schema::table('pengalaman_proyek', function (Blueprint $table) {
             $table->dropForeignIdFor(\App\Models\Project::class);
+        });
+        Schema::table('pengalaman_proyek', function (Blueprint $table) {
             $table->dropColumn('project_id');
         });
     }
