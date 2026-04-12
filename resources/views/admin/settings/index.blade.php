@@ -304,6 +304,22 @@
         </div>
 
         <div class="card form-card mb-4">
+            <div class="fcard-header"><i class="fas fa-mouse-pointer me-2"></i>Teks Tombol Beranda</div>
+            <div class="fcard-body">
+                <div class="mb-3">
+                    <label class="form-label">Tombol "Lihat Semua Layanan"</label>
+                    <input type="text" name="btn_layanan_text" class="form-control" value="{{ old('btn_layanan_text', $settings['btn_layanan_text'] ?? 'Lihat Semua Layanan') }}" placeholder="Lihat Semua Layanan" maxlength="100">
+                    <small class="text-muted">Teks tombol di bagian Layanan pada halaman beranda.</small>
+                </div>
+                <div>
+                    <label class="form-label">Tombol "Lihat Semua Klien"</label>
+                    <input type="text" name="btn_klien_text" class="form-control" value="{{ old('btn_klien_text', $settings['btn_klien_text'] ?? 'Lihat Semua Klien') }}" placeholder="Lihat Semua Klien" maxlength="100">
+                    <small class="text-muted">Teks tombol di bagian Klien pada halaman beranda.</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="card form-card mb-4">
             <div class="fcard-header"><i class="fas fa-certificate me-2"></i>SEO & Meta</div>
             <div class="fcard-body">
                 <div class="mb-3">

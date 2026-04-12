@@ -52,6 +52,8 @@ class SettingController extends Controller
             'wa_gateway'            => 'nullable|string|max:50',
             'wa_api_key'            => 'nullable|string|max:500',
             'wa_api_url'            => 'nullable|url|max:500',
+            'btn_layanan_text'      => 'nullable|string|max:100',
+            'btn_klien_text'        => 'nullable|string|max:100',
         ]);
 
         $textFields = [
@@ -63,6 +65,7 @@ class SettingController extends Controller
             'mail_encryption', 'mail_from_address', 'mail_from_name',
             'sms_gateway', 'sms_api_key', 'sms_api_secret',
             'wa_gateway', 'wa_api_key', 'wa_api_url',
+            'btn_layanan_text', 'btn_klien_text',
         ];
 
         foreach ($textFields as $key) {

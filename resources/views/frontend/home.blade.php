@@ -134,7 +134,7 @@
             @endforeach
         </div>
         <div class="text-center mt-5">
-            <a href="{{ route('layanan') }}" class="btn btn-cmic-outline px-5 py-2">Lihat Semua Layanan</a>
+            <a href="{{ route('layanan') }}" class="btn btn-cmic-outline px-5 py-2">{{ \App\Models\Setting::get('btn_layanan_text', 'Lihat Semua Layanan') }}</a>
         </div>
     </div>
 </section>
@@ -160,7 +160,7 @@
             @endforeach
         </div>
         <div class="text-center mt-4">
-            <a href="{{ route('klien') }}" class="btn btn-cmic-outline px-4">Lihat Semua Klien</a>
+            <a href="{{ route('klien') }}" class="btn btn-cmic-outline px-4">{{ \App\Models\Setting::get('btn_klien_text', 'Lihat Semua Klien') }}</a>
         </div>
     </div>
 </section>

@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
             'about_h3_label'  => 'Terpercaya',
             'about_h4_icon'   => 'fas fa-handshake',
             'about_h4_label'  => 'Berkomitmen',
+            'btn_layanan_text' => 'Lihat Semua Layanan',
+            'btn_klien_text'   => 'Lihat Semua Klien',
         ];
         foreach ($defaults as $key => $value) {
             Setting::updateOrCreate(['key' => $key], ['value' => $value]);
