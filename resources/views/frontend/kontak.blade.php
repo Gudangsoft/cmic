@@ -58,6 +58,13 @@
                     <h4 style="color:var(--cmic-blue); font-weight:700;" class="mb-4">Kirim Pesan</h4>
                     <form action="{{ route('kontak.store') }}" method="POST">
                         @csrf
+                        {{-- Honeypot: invisible to humans, bots will fill this --}}
+                        <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true" tabindex="-1">
+                            <label for="website_url">Website</label>
+                            <input type="text" id="website_url" name="website_url" autocomplete="off" tabindex="-1">
+                        </div>
+                        {{-- Time token: detect submissions faster than 3 seconds --}}
+                        <input type="hidden" name="form_token" value="{{ base64_encode(time() . '|' . csrf_token()) }}">
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label fw-semibold">Nama Lengkap <span class="text-danger">*</span></label>

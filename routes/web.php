@@ -23,7 +23,7 @@ Route::get('/klien', [KlienController::class, 'index'])->name('klien');
 Route::get('/klien/{client}', [KlienController::class, 'show'])->name('klien.show');
 Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri');
 Route::get('/kontak-kami', [KontakController::class, 'index'])->name('kontak');
-Route::post('/kontak-kami', [KontakController::class, 'store'])->name('kontak.store')->middleware('throttle:5,1');
+Route::post('/kontak-kami', [KontakController::class, 'store'])->name('kontak.store')->middleware('throttle:3,1');
 
 // Dynamic pages (must be before admin routes)
 Route::get('/halaman/{slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
