@@ -80,7 +80,7 @@
                     @php
                         $misiLines = array_filter(array_map('trim', explode("\n", $siteSettings['about_misi'] ?? "Memberikan layanan konsultansi berkualitas tinggi\nMengembangkan sumber daya manusia yang kompeten\nMenerapkan teknologi terkini dalam setiap proyek\nMenjaga kepercayaan klien dengan profesionalisme tinggi")));
                     @endphp
-                    <ul class="ps-0 d-inline-block text-start" style="list-style:none;">
+                    <ul class="ps-0 mx-auto text-start" style="list-style:none; display:table;">
                         @foreach($misiLines as $poin)
                         <li class="mb-2"><i class="fas fa-check me-2" style="color:var(--cmic-yellow); font-weight:700;"></i><span style="color:var(--cmic-blue); font-weight:500;">{{ $poin }}</span></li>
                         @endforeach
