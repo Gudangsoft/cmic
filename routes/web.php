@@ -42,8 +42,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('team/update-intro', [\App\Http\Controllers\Admin\TeamController::class, 'updateIntro'])->name('team.updateIntro');
         Route::resource('team', \App\Http\Controllers\Admin\TeamController::class)->except('show');
         Route::put('projects/update-intro', [\App\Http\Controllers\Admin\ProjectController::class, 'updateIntro'])->name('projects.updateIntro');
-        Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class)->except('show');
         Route::get('projects/export', [\App\Http\Controllers\Admin\ProjectController::class, 'export'])->name('projects.export');
+        Route::get('projects/import-template', [\App\Http\Controllers\Admin\ProjectController::class, 'importTemplate'])->name('projects.importTemplate');
+        Route::post('projects/import', [\App\Http\Controllers\Admin\ProjectController::class, 'import'])->name('projects.import');
+        Route::resource('projects', \App\Http\Controllers\Admin\ProjectController::class)->except('show');
         Route::resource('clients', \App\Http\Controllers\Admin\ClientController::class)->except('show');
         Route::post('clients/{client}/logo', [\App\Http\Controllers\Admin\ClientController::class, 'updateLogo'])->name('clients.updateLogo');
         Route::resource('client-types', \App\Http\Controllers\Admin\ClientTypeController::class)->except('show');

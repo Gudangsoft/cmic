@@ -9,6 +9,12 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
 </div>
 @endif
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show">
+    <i class="fas fa-exclamation-circle me-2"></i>{{ session('error') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+@endif
 
 {{-- Pengaturan Halaman Pengalaman --}}
 <div class="form-card mb-4">
@@ -143,9 +149,12 @@
     <div class="cht-header">
         <span><i class="fas fa-briefcase me-2"></i>Daftar Pengalaman / Proyek</span>
         <div class="d-flex gap-2">
-            <a href="{{ route('admin.projects.export') }}" class="btn btn-sm btn-outline-success" title="Export ke Excel/CSV">
-                <i class="fas fa-file-excel me-1"></i>Export CSV
+            <a href="{{ route('admin.projects.export') }}" class="btn btn-sm btn-outline-success" title="Export semua data ke file Excel">
+                <i class="fas fa-file-excel me-1"></i>Export Excel
             </a>
+            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#importModal" title="Import data dari file Excel">
+                <i class="fas fa-file-upload me-1"></i>Import Excel
+            </button>
             <a href="{{ route('admin.projects.create') }}" class="add-btn"><i class="fas fa-plus me-1"></i>Tambah Proyek</a>
         </div>
     </div>
@@ -227,6 +236,52 @@
         @endif
     </div>
 </div>
+
+{{-- Import Modal --}}
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header" style="background:#1859A9;">
+                <h5 class="modal-title text-white" id="importModalLabel">
+                    <i class="fas fa-file-upload me-2"></i>Import Proyek dari Excel
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <form action="{{ route('admin.projects.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="alert alert-info d-flex gap-2 align-items-start mb-3 py-2" style="font-size:13px;border-radius:8px;">
+                        <i class="fas fa-info-circle mt-1 flex-shrink-0"></i>
+                        <div>
+                            Upload file <strong>.xlsx</strong>, <strong>.xls</strong>, atau <strong>.csv</strong>.<br>
+                            Kolom: <strong>Nama Proyek</strong> (wajib), Klien, Lokasi, Tahun, Bidang/Jenis, Deskripsi, Status.<br>
+                            Kolom Bidang/Jenis &amp; Klien dicocokkan berdasarkan nama.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small">Pilih File <span class="text-danger">*</span></label>
+                        <input type="file" name="file" class="form-control @error('file') is-invalid @enderror"
+                               accept=".xlsx,.xls,.csv" required>
+                        @error('file')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <small class="text-muted">Maksimal 5 MB. Format: .xlsx, .xls, .csv</small>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between align-items-center">
+                    <a href="{{ route('admin.projects.importTemplate') }}" class="btn btn-sm btn-outline-secondary">
+                        <i class="fas fa-download me-1"></i>Download Template
+                    </a>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary btn-sm px-4">
+                            <i class="fas fa-upload me-1"></i>Import
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 @endsection
 @push('scripts')
 <script>
