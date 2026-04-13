@@ -315,17 +315,17 @@
             <h2 class="section-title">Legalitas Perusahaan</h2>
             <span class="section-divider"></span>
         </div>
-        <div class="row g-3 justify-content-center">
+        <div class="row g-4 justify-content-center">
             @foreach($legalItems as $item)
-            <div class="col-md-4 col-sm-6">
-                <div class="card border-0 shadow-sm h-100 p-3">
-                    <div class="d-flex align-items-center gap-3">
-                        <div style="width:44px;height:44px;background:var(--cmic-blue);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <i class="{{ $item->icon }} text-white"></i>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center p-4">
+                    <div class="d-flex flex-column align-items-center gap-3">
+                        <div style="width:56px;height:56px;background:var(--cmic-blue);border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 14px rgba(0,87,168,0.2);">
+                            <i class="{{ $item->icon }} text-white fa-lg"></i>
                         </div>
                         <div>
-                            <div class="text-muted small">{{ $item->label }}</div>
-                            <div class="fw-semibold" style="font-size:14px;">{{ $item->value }}</div>
+                            <div class="text-muted small mb-1" style="letter-spacing:.4px;">{{ $item->label }}</div>
+                            <div class="fw-bold" style="font-size:15px;color:var(--cmic-blue);">{{ $item->value }}</div>
                         </div>
                     </div>
                 </div>
