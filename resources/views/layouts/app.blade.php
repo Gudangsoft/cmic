@@ -34,7 +34,7 @@
 
         /* Brand Header */
         .brand-header {
-            background: linear-gradient(120deg, #001f4d 0%, #003080 50%, #0044aa 100%);
+            background: linear-gradient(120deg, #0044aa 0%, #003080 50%, #001f4d 100%);
             padding: 18px 0;
             border-bottom: 4px solid var(--cmic-yellow);
             box-shadow: 0 4px 20px rgba(0,0,0,0.4);
