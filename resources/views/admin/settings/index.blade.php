@@ -342,7 +342,77 @@
             </div>
         </div>
     </div>
+
 </div>
+</form>
+
+@php $isMaintenance = ($settings['maintenance_mode'] ?? '0') === '1'; @endphp
+<form action="{{ route('admin.settings.maintenance') }}" method="POST" class="mt-3">
+    @csrf
+    <div class="card form-card mb-4 border-0 shadow-sm" style="border-left:4px solid {{ $isMaintenance ? '#ef4444' : '#22c55e' }}!important;">
+        <div class="fcard-header d-flex align-items-center gap-2" style="background:{{ $isMaintenance ? '#fef2f2' : '#f0fdf4' }};border-radius:10px 10px 0 0;">
+            <span class="rounded-circle d-inline-flex align-items-center justify-content-center flex-shrink-0"
+                  style="width:34px;height:34px;background:{{ $isMaintenance ? '#ef4444' : '#22c55e' }};">
+                <i class="fas {{ $isMaintenance ? 'fa-hard-hat' : 'fa-globe' }} text-white" style="font-size:15px;"></i>
+            </span>
+            <span class="fw-bold" style="color:{{ $isMaintenance ? '#b91c1c' : '#15803d' }};font-size:14px;">
+                Mode Maintenance
+            </span>
+            @if($isMaintenance)
+                <span class="badge bg-danger ms-auto">AKTIF</span>
+            @else
+                <span class="badge bg-success ms-auto">Normal</span>
+            @endif
+        </div>
+        <div class="fcard-body">
+            @if($isMaintenance)
+            <div class="alert alert-danger d-flex gap-2 align-items-start py-2 mb-3" style="font-size:12.5px;border-radius:8px;">
+                <i class="fas fa-exclamation-triangle mt-1 flex-shrink-0"></i>
+                <span><strong>Website dalam mode maintenance!</strong> Pengunjung umum melihat halaman pemeliharaan.</span>
+            </div>
+            @else
+            <div class="alert alert-success d-flex gap-2 align-items-start py-2 mb-3" style="font-size:12.5px;border-radius:8px;">
+                <i class="fas fa-check-circle mt-1 flex-shrink-0"></i>
+                <span>Website berjalan normal. Aktifkan maintenance saat melakukan update besar.</span>
+            </div>
+            @endif
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label small fw-semibold">Judul Halaman Maintenance</label>
+                    <input type="text" name="maintenance_title" class="form-control form-control-sm"
+                           value="{{ old('maintenance_title', $settings['maintenance_title'] ?? 'Sedang Dalam Pemeliharaan') }}"
+                           placeholder="Judul yang ditampilkan ke pengunjung">
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label small fw-semibold">Pesan untuk Pengunjung</label>
+                    <textarea name="maintenance_message" rows="2" class="form-control form-control-sm"
+                              placeholder="Pesan penjelasan...">{{ old('maintenance_message', $settings['maintenance_message'] ?? 'Website sedang dalam pemeliharaan. Silakan kunjungi kembali beberapa saat lagi.') }}</textarea>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label small fw-semibold">IP yang Diizinkan <span class="text-muted fw-normal">(opsional)</span></label>
+                    <input type="text" name="maintenance_allowed_ips" class="form-control form-control-sm"
+                           value="{{ old('maintenance_allowed_ips', $settings['maintenance_allowed_ips'] ?? '') }}"
+                           placeholder="127.0.0.1, 192.168.1.1">
+                    <small class="text-muted">Pisahkan dengan koma.</small>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-between mt-3 pt-3 border-top gap-2">
+                <div class="form-check form-switch mb-0">
+                    <input class="form-check-input" type="checkbox" name="maintenance_mode" value="1"
+                           id="maintenanceToggle" role="switch" style="width:3em;height:1.5em;"
+                           {{ $isMaintenance ? 'checked' : '' }}>
+                    <label class="form-check-label fw-semibold small" for="maintenanceToggle" style="color:{{ $isMaintenance ? '#b91c1c' : '#334155' }};">
+                        {{ $isMaintenance ? 'Maintenance AKTIF' : 'Maintenance OFF' }}
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-sm {{ $isMaintenance ? 'btn-danger' : 'btn-success' }} px-3 fw-semibold">
+                    <i class="fas fa-save me-1"></i>Simpan Mode Maintenance
+                </button>
+            </div>
+        </div>
+    </div>
 </form>
 @endsection
 @push('scripts')

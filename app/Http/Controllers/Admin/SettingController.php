@@ -86,4 +86,22 @@ class SettingController extends Controller
 
         return back()->with('success', 'Pengaturan berhasil disimpan.');
     }
+
+    public function toggleMaintenance(Request $request)
+    {
+        $request->validate([
+            'maintenance_mode'        => 'nullable|in:0,1',
+            'maintenance_title'       => 'nullable|string|max:200',
+            'maintenance_message'     => 'nullable|string|max:1000',
+            'maintenance_allowed_ips' => 'nullable|string|max:500',
+        ]);
+
+        Setting::set('maintenance_mode',        $request->boolean('maintenance_mode') ? '1' : '0');
+        Setting::set('maintenance_title',       $request->input('maintenance_title',       'Sedang Dalam Pemeliharaan'));
+        Setting::set('maintenance_message',     $request->input('maintenance_message',     'Website sedang dalam pemeliharaan. Silakan kunjungi kembali beberapa saat lagi.'));
+        Setting::set('maintenance_allowed_ips', $request->input('maintenance_allowed_ips', ''));
+
+        $status = $request->boolean('maintenance_mode') ? 'AKTIF' : 'NONAKTIF';
+        return back()->with('success', "Mode Maintenance {$status}.");
+    }
 }

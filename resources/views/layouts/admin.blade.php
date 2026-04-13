@@ -163,12 +163,18 @@
     </div>
 </aside>
 <div class="main-wrapper">
+    @php $isMaintenance = ($siteSettings['maintenance_mode'] ?? '0') === '1'; @endphp
     <div class="topbar">
         <div class="topbar-left">
             <button class="btn btn-sm d-lg-none" style="color:#334155;" onclick="toggleSidebar()"><i class="fas fa-bars fa-lg"></i></button>
             <h5 class="page-title">@yield('page-title', 'Dashboard')</h5>
         </div>
         <div class="topbar-right">
+            @if($isMaintenance)
+            <a href="{{ route('admin.settings.index') }}" class="btn btn-sm" style="background:#fef2f2;color:#b91c1c;border:1px solid #fecaca;" title="Mode maintenance aktif">
+                <i class="fas fa-hard-hat me-1"></i>Maintenance ON
+            </a>
+            @endif
             <a href="{{ route('admin.contacts.index') }}" class="btn btn-sm position-relative" style="color:#64748b;" title="Pesan Masuk">
                 <i class="fas fa-bell"></i>
                 @if($unreadCount > 0)<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size:9px;">{{ $unreadCount }}</span>@endif

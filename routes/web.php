@@ -63,6 +63,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::put('about', [\App\Http\Controllers\Admin\AboutController::class, 'update'])->name('about.update');
         Route::get('settings', [\App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings.index');
         Route::put('settings', [\App\Http\Controllers\Admin\SettingController::class, 'update'])->name('settings.update');
+        Route::post('settings/maintenance', [\App\Http\Controllers\Admin\SettingController::class, 'toggleMaintenance'])->name('settings.maintenance');
         Route::get('activity-logs', [\App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
         Route::delete('activity-logs/clear', [\App\Http\Controllers\Admin\ActivityLogController::class, 'clear'])->name('activity-logs.clear');
         Route::resource('legal-items', \App\Http\Controllers\Admin\LegalItemController::class)->except('show');
