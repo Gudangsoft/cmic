@@ -57,7 +57,7 @@
         @endif
 
         @if($services->count())
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             @foreach($services as $service)
             <div class="col-lg-4 col-md-6">
                 <div class="card card-service h-100">

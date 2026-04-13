@@ -59,28 +59,28 @@
         </div>
         <div class="row g-4">
             <div class="col-12">
-                <div class="card h-100 border-0 shadow-sm p-4">
-                    <div class="d-flex align-items-center mb-3">
+                <div class="card h-100 border-0 shadow-sm p-4 text-center">
+                    <div class="d-flex flex-column align-items-center mb-3">
                         <div style="width:50px;height:50px;background:var(--cmic-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
                             <i class="fas fa-eye text-white fa-lg"></i>
                         </div>
-                        <h4 class="ms-3 mb-0" style="color:var(--cmic-blue); font-weight:700;">Visi</h4>
+                        <h4 class="mt-2 mb-0" style="color:var(--cmic-blue); font-weight:700;">Visi</h4>
                     </div>
                     <p class="text-muted">{{ $siteSettings['about_visi'] ?? 'Menjadi perusahaan konsultan terkemuka di Indonesia yang memberikan solusi terbaik dalam perencanaan dan pengawasan konstruksi dengan mengutamakan kualitas, inovasi, dan integritas.' }}</p>
                 </div>
             </div>
             <div class="col-12">
-                <div class="card h-100 border-0 shadow p-5" style="background: linear-gradient(135deg, rgba(0,87,168,0.05), rgba(245,197,24,0.05)); border: 1px solid rgba(245,197,24,0.2);">
-                    <div class="d-flex align-items-center mb-3">
+                <div class="card h-100 border-0 shadow p-5 text-center" style="background: linear-gradient(135deg, rgba(0,87,168,0.05), rgba(245,197,24,0.05)); border: 1px solid rgba(245,197,24,0.2);">
+                    <div class="d-flex flex-column align-items-center mb-3">
                         <div style="width:60px;height:60px;background:var(--cmic-yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(245,197,24,0.3);">
                             <i class="fas fa-bullseye text-dark fa-lg"></i>
                         </div>
-                        <h4 class="ms-3 mb-0" style="color:var(--cmic-blue); font-weight:700;">Misi</h4>
+                        <h4 class="mt-2 mb-0" style="color:var(--cmic-blue); font-weight:700;">Misi</h4>
                     </div>
                     @php
                         $misiLines = array_filter(array_map('trim', explode("\n", $siteSettings['about_misi'] ?? "Memberikan layanan konsultansi berkualitas tinggi\nMengembangkan sumber daya manusia yang kompeten\nMenerapkan teknologi terkini dalam setiap proyek\nMenjaga kepercayaan klien dengan profesionalisme tinggi")));
                     @endphp
-                    <ul class="ps-0" style="list-style:none;">
+                    <ul class="ps-0 d-inline-block text-start" style="list-style:none;">
                         @foreach($misiLines as $poin)
                         <li class="mb-2"><i class="fas fa-check me-2" style="color:var(--cmic-yellow); font-weight:700;"></i><span style="color:var(--cmic-blue); font-weight:500;">{{ $poin }}</span></li>
                         @endforeach

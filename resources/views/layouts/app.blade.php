@@ -231,6 +231,9 @@
         .footer-map-wrapper { border-radius: 12px; overflow: hidden; border: 2px solid rgba(245,197,24,0.25); box-shadow: 0 8px 32px rgba(0,0,0,0.35); }
         footer a { color: rgba(255,255,255,0.75); text-decoration: none; transition: color .2s; }
         footer a:hover { color: var(--cmic-yellow); }
+        .footer-social-bar { border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2); }
+        .footer-social-icon { font-size: 22px; color: rgba(255,255,255,0.7); transition: color .2s, transform .2s; display: inline-block; }
+        .footer-social-icon:hover { color: var(--cmic-yellow); transform: translateY(-3px); }
         footer .footer-bottom {
             background: rgba(0,0,0,0.35);
             font-size: 12.5px; padding: 14px 0;
@@ -349,23 +352,13 @@
             {{ $siteSettings['company_email'] ?? 'info@cmic.co.id' }}
         </div>
         <div>
-            @if(!empty($siteSettings['facebook']))
-                <a href="{{ $siteSettings['facebook'] }}" target="_blank" class="me-2"><i class="fab fa-facebook"></i></a>
-            @endif
-            @if(!empty($siteSettings['instagram']))
-                <a href="{{ $siteSettings['instagram'] }}" target="_blank" class="me-2"><i class="fab fa-instagram"></i></a>
-            @endif
-            @if(!empty($siteSettings['linkedin']))
-                <a href="{{ $siteSettings['linkedin'] }}" target="_blank" class="me-2"><i class="fab fa-linkedin"></i></a>
-            @endif
-            @if(!empty($siteSettings['youtube']))
-                <a href="{{ $siteSettings['youtube'] }}" target="_blank" class="me-2"><i class="fab fa-youtube"></i></a>
-            @endif
-            @if(!empty($siteSettings['twitter']))
-                <a href="{{ $siteSettings['twitter'] }}" target="_blank" class="me-2"><i class="fab fa-twitter"></i></a>
-            @endif
+            <a href="{{ !empty($siteSettings['facebook']) ? $siteSettings['facebook'] : '#' }}" target="_blank" class="me-2" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="{{ !empty($siteSettings['instagram']) ? $siteSettings['instagram'] : '#' }}" target="_blank" class="me-2" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="{{ !empty($siteSettings['linkedin']) ? $siteSettings['linkedin'] : '#' }}" target="_blank" class="me-2" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="{{ !empty($siteSettings['youtube']) ? $siteSettings['youtube'] : '#' }}" target="_blank" class="me-2" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="{{ !empty($siteSettings['twitter']) ? $siteSettings['twitter'] : '#' }}" target="_blank" class="me-2" title="Twitter / X"><i class="fab fa-twitter"></i></a>
             @if(!empty($siteSettings['whatsapp']))
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp']) }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp']) }}" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             @endif
         </div>
     </div>
@@ -528,7 +521,20 @@
 
         </div>
     </div>
-    <div class="footer-bottom mt-5 text-center">
+    {{-- Social Media Footer --}}
+    <div class="footer-social-bar mt-5 py-3 text-center">
+        <div class="container">
+            <a href="{{ !empty($siteSettings['facebook']) ? $siteSettings['facebook'] : '#' }}" target="_blank" class="footer-social-icon me-3" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="{{ !empty($siteSettings['instagram']) ? $siteSettings['instagram'] : '#' }}" target="_blank" class="footer-social-icon me-3" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="{{ !empty($siteSettings['linkedin']) ? $siteSettings['linkedin'] : '#' }}" target="_blank" class="footer-social-icon me-3" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="{{ !empty($siteSettings['youtube']) ? $siteSettings['youtube'] : '#' }}" target="_blank" class="footer-social-icon me-3" title="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="{{ !empty($siteSettings['twitter']) ? $siteSettings['twitter'] : '#' }}" target="_blank" class="footer-social-icon me-3" title="Twitter / X"><i class="fab fa-twitter"></i></a>
+            @if(!empty($siteSettings['whatsapp']))
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $siteSettings['whatsapp']) }}" target="_blank" class="footer-social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            @endif
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
         <div class="container">
             &copy; {{ date('Y') }} <strong style="color:rgba(255,255,255,0.75);">{{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}</strong>. All rights reserved.
         </div>
