@@ -34,28 +34,21 @@
 
         /* Brand Header */
         .brand-header {
-            background: linear-gradient(120deg, var(--cmic-dark-blue) 0%, var(--cmic-blue) 100%);
-            padding: 22px 0;
+            background: linear-gradient(120deg, #001f4d 0%, #003080 50%, #0044aa 100%);
+            padding: 18px 0;
             border-bottom: 4px solid var(--cmic-yellow);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
         .brand-logo-ring {
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(245,197,24,0.15));
-            border: 3px solid rgba(255,255,255,0.4);
             display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 0 40px rgba(245,197,24,0.5), 0 0 0 1px rgba(255,255,255,0.2), inset 0 0 30px rgba(245,197,24,0.1);
-            transition: box-shadow 0.35s, transform 0.35s;
             flex-shrink: 0;
+            padding: 6px;
+            transition: transform 0.3s;
         }
-        .brand-logo-ring:hover {
-            box-shadow: 0 0 60px rgba(245,197,24,0.7), 0 0 0 1px rgba(255,255,255,0.3), inset 0 0 40px rgba(245,197,24,0.2);
-            transform: scale(1.08);
-        }
+        .brand-logo-ring:hover { transform: scale(1.05); }
         .brand-logo-ring img {
-            height: 100px; object-fit: contain;
-            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.5)) drop-shadow(0 0 20px rgba(245,197,24,0.3));
+            height: 110px; object-fit: contain;
+            filter: drop-shadow(0 2px 12px rgba(0,0,0,0.6)) brightness(1.08);
         }
         .brand-info { padding-left: 32px; }
         .brand-company-name {
@@ -197,19 +190,12 @@
             pointer-events: none;
         }
         .footer-logo-ring {
-            width: 72px; height: 72px; flex-shrink: 0;
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.12), rgba(245,197,24,0.08));
-            border: 2px solid rgba(245,197,24,0.55);
-            box-shadow: 0 0 0 5px rgba(245,197,24,0.08), 0 0 24px rgba(245,197,24,0.25), inset 0 0 16px rgba(245,197,24,0.07);
+            flex-shrink: 0;
             display: flex; align-items: center; justify-content: center;
-            transition: box-shadow .35s, transform .35s;
+            transition: transform .3s;
         }
-        .footer-logo-ring:hover {
-            box-shadow: 0 0 0 7px rgba(245,197,24,0.14), 0 0 36px rgba(245,197,24,0.4), inset 0 0 20px rgba(245,197,24,0.1);
-            transform: scale(1.05);
-        }
-        .footer-logo-ring img { height: 46px; width: 46px; object-fit: contain; }
+        .footer-logo-ring:hover { transform: scale(1.05); }
+        .footer-logo-ring img { height: 70px; width: auto; object-fit: contain; filter: brightness(1.1) drop-shadow(0 2px 8px rgba(0,0,0,0.5)); }
         .footer-brand-block { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
         .footer-brand-name { font-size: 1.2rem; font-weight: 800; color: #fff; letter-spacing: 0.3px; margin-bottom: 4px; line-height: 1.2; }
         .footer-tagline { color: var(--cmic-yellow); font-size: 11.5px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 0; }
@@ -375,7 +361,6 @@
                          onerror="this.style.display='none';">
                 @else
                     <img src="{{ asset('images/logo.png') }}" alt="CMIC Logo"
-                         style="filter: brightness(10);"
                          onerror="this.style.display='none';">
                 @endif
             </div>
