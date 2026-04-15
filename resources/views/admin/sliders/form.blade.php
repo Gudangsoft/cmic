@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', isset($slider->id) ? 'Edit Slider' : 'Tambah Slider')
 @section('page-title', isset($slider->id) ? 'Edit Slider' : 'Tambah Slider')
 @section('breadcrumb')
@@ -153,7 +153,7 @@
                         <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"
                                accept="image/*" onchange="previewImage(this,'imgPrev')">
                         @error('image')<div class="invalid-feedback">{{ $message }}</div>@enderror
-                        <small class="text-muted d-block mt-1"><i class="fas fa-info-circle me-1"></i>Ukuran ideal: <strong>1920×700 px</strong> (landscape). Maks. 2MB.</small>
+                        <small class="text-muted d-block mt-1"><i class="fas fa-info-circle me-1"></i>Ukuran ideal: <strong>1920×700 px</strong> (landscape). Maks. 3MB.</small>
                         <div class="img-preview-box mt-2" id="imgPrev">
                             @if(isset($slider->id) && $slider->image)
                             <img src="{{ asset('storage/'.$slider->image) }}" class="rounded" alt="">
