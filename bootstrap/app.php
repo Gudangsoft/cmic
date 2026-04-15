@@ -13,9 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->redirectGuestsTo(fn () => route('admin.login'));
         $middleware->append(\App\Http\Middleware\SecurityHeadersMiddleware::class);
-        $middleware->web(append: [
-            \App\Http\Middleware\CheckMaintenanceMode::class,
-        ]);
+        $middleware->append(\App\Http\Middleware\CheckMaintenanceMode::class);
+        $middleware->encryptCookies(except: ['maintenance_bypass']);
         $middleware->alias([
             'log.activity' => \App\Http\Middleware\LogAdminActivity::class,
         ]);

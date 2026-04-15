@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Middleware\CheckMaintenanceMode;
 use App\Models\ActivityLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class AuthController extends Controller
 {
@@ -27,7 +29,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
             ActivityLog::log('login', 'Login ke admin panel');
-            return redirect()->intended(route('admin.dashboard'));
+
+            // Set maintenance bypass cookie so admin can view public site
+            return redirect()->intended(route('admin.dashboard'))
+                ->withCookie(CheckMaintenanceMode::makeBypassCookie());
         }
 
         return back()->withErrors([
@@ -41,6 +46,10 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('admin.login');
+
+        // Remove maintenance bypass cookie on logout
+        return redirect()->route('admin.login')
+            ->withCookie(Cookie::forget(CheckMaintenanceMode::BYPASS_COOKIE));
     }
 }
+
