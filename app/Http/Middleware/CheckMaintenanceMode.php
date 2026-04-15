@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Setting;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -18,6 +19,11 @@ class CheckMaintenanceMode
 
         // Keep framework health check endpoint accessible
         if ($request->is('up')) {
+            return $next($request);
+        }
+
+        // Allow authenticated admin users to access the main website
+        if (Auth::check()) {
             return $next($request);
         }
 
