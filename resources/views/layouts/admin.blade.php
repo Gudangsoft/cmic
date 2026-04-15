@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css">
     <style>
         :root {
             --blue: {{ $siteSettings['theme_color_primary'] ?? '#0057A8' }};
@@ -96,6 +98,17 @@
         div.dataTables_wrapper div.dataTables_paginate ul.pagination { margin-top:4px; }
         .page-link { font-size:13px; }
         .badge { font-size:11.5px; padding:4px 8px; }
+        /* Select2 custom overrides */
+        .select2-container--bootstrap-5 .select2-selection { font-family:'Poppins',sans-serif; font-size:14px; border-color:#d1d5db; border-radius:8px; min-height:40px; padding:4px 8px; }
+        .select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered { line-height:30px; color:#374151; padding-left:4px; }
+        .select2-container--bootstrap-5.select2-container--focus .select2-selection,
+        .select2-container--bootstrap-5.select2-container--open .select2-selection { border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,87,168,.12); }
+        .select2-container--bootstrap-5 .select2-dropdown { border-color:#d1d5db; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.12); font-family:'Poppins',sans-serif; font-size:13.5px; }
+        .select2-container--bootstrap-5 .select2-search--dropdown .select2-search__field { border-radius:6px; border-color:#d1d5db; font-size:13.5px; padding:8px 12px; }
+        .select2-container--bootstrap-5 .select2-search--dropdown .select2-search__field:focus { border-color:var(--blue); box-shadow:0 0 0 2px rgba(0,87,168,.1); }
+        .select2-container--bootstrap-5 .select2-results__option--highlighted[aria-selected] { background:var(--blue); }
+        .select2-container--bootstrap-5 .select2-results__option { padding:8px 12px; }
+        .select2-container--bootstrap-5 .select2-selection__clear { margin-right:4px; font-size:18px; color:#94a3b8; }
     </style>
     @stack('styles')
 </head>
@@ -227,6 +240,8 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/i18n/id.js"></script>
 <script>
 function toggleSidebar(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('sidebarBackdrop').classList.toggle('open');}
 function toggleGroup(el){el.classList.toggle('open');const children=el.nextElementSibling;children.classList.toggle('show');}
@@ -236,6 +251,24 @@ function confirmDelete(form,msg){_delForm=form;document.getElementById('deleteMo
 document.getElementById('deleteConfirmBtn').addEventListener('click',function(){if(_delForm)_delForm.submit();});
 function previewImage(input,previewId){var f=input.files[0];if(!f)return;var r=new FileReader();r.onload=function(e){var b=document.getElementById(previewId);b.innerHTML='<img src="'+e.target.result+'" class="rounded">';b.style.borderStyle='solid';};r.readAsDataURL(f);}
 setTimeout(function(){document.querySelectorAll('.alert').forEach(function(el){try{new bootstrap.Alert(el).close();}catch(e){}});},5000);
+// Select2: auto-init all .form-select dropdowns with searchable feature
+$(function(){
+    $('select.form-select').each(function(){
+        var $el = $(this);
+        // Skip selects that are inside DataTables length controls
+        if ($el.closest('.dataTables_length').length) return;
+        // Skip selects with fewer than 4 options (not worth searching)
+        if ($el.find('option').length < 4) return;
+        $el.select2({
+            theme: 'bootstrap-5',
+            width: '100%',
+            language: 'id',
+            allowClear: $el.find('option[value=""]').length > 0,
+            placeholder: $el.find('option[value=""]').text() || 'Pilih...',
+            dropdownParent: $el.closest('.modal').length ? $el.closest('.modal') : $(document.body)
+        });
+    });
+});
 </script>
 @stack('scripts')
 </body>

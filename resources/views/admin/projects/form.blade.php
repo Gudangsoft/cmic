@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', isset($project->id) ? 'Edit Proyek' : 'Tambah Proyek')
 @section('page-title', isset($project->id) ? 'Edit Proyek' : 'Tambah Proyek')
 @section('breadcrumb')
@@ -198,15 +198,16 @@ function restoreProjGalleryItem(idx, btn) {
     btn.onclick = function() { removeProjGalleryItem(idx, btn); };
 }
 
-// Toggle freetext client field based on dropdown selection
-document.getElementById('clientSelect').addEventListener('change', function(){
-    var ft = document.getElementById('clientFreetext');
-    if(this.value) {
-        ft.style.display = 'none';
-        ft.value = '';
-    } else {
-        ft.style.display = '';
-    }
+// Toggle freetext client field based on dropdown selection (Select2 compatible)
+$(function(){
+    $('#clientSelect').on('change', function(){
+        var ft = $('#clientFreetext');
+        if($(this).val()) {
+            ft.hide().val('');
+        } else {
+            ft.show();
+        }
+    });
 });
 </script>
 @endpush
