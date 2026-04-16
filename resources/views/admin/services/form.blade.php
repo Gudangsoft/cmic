@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', isset($service->id) ? 'Edit Layanan' : 'Tambah Layanan')
 @section('page-title', isset($service->id) ? 'Edit Layanan' : 'Tambah Layanan')
 @section('breadcrumb')
@@ -30,7 +30,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Deskripsi <span class="text-danger">*</span></label>
-                <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror" required>{{ old('description', $service->description) }}</textarea>
+                <textarea name="description" rows="5" class="form-control tinymce-editor @error('description') is-invalid @enderror">{{ old('description', $service->description) }}</textarea>
                 @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
             </div>
             <div class="form-section-title mt-4">Gambar & Pengaturan</div>

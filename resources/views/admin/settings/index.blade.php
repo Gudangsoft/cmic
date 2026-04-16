@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title','Pengaturan') @section('page-title','Pengaturan Website')
 @section('breadcrumb')<li class="breadcrumb-item active">Pengaturan</li>@endsection
 @section('content')
@@ -43,7 +43,7 @@
                     </div>
                     <div class="col-12">
                         <label class="form-label">Tentang Perusahaan (Halaman Beranda)</label>
-                        <textarea name="company_about" rows="5" class="form-control" placeholder="Paragraf singkat tentang perusahaan...">{{ old('company_about', $settings['company_about'] ?? '') }}</textarea>
+                        <textarea name="company_about" rows="5" class="form-control tinymce-editor" placeholder="Paragraf singkat tentang perusahaan...">{{ old('company_about', $settings['company_about'] ?? '') }}</textarea>
                         <small class="text-muted">Teks ini akan tampil di bagian "Tentang" halaman beranda.</small>
                     </div>
                 </div>

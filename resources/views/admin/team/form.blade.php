@@ -1,4 +1,4 @@
-﻿@extends('layouts.admin')
+@extends('layouts.admin')
 @section('title', isset($member->id) ? 'Edit Anggota Tim' : 'Tambah Anggota Tim')
 @section('page-title', isset($member->id) ? 'Edit Anggota Tim' : 'Tambah Anggota Tim')
 @section('breadcrumb')
@@ -58,7 +58,7 @@
 
             <div class="mb-3">
                 <label class="form-label">Deskripsi / Biografi</label>
-                <textarea name="description" rows="4" class="form-control" placeholder="Deskripsi singkat tentang anggota tim, pengalaman, atau latar belakangnya...">{{ old('description', $member->description) }}</textarea>
+                <textarea name="description" rows="4" class="form-control tinymce-editor" placeholder="Deskripsi singkat tentang anggota tim, pengalaman, atau latar belakangnya...">{{ old('description', $member->description) }}</textarea>
                 <small class="text-muted">Tampil di halaman detail profil. Bisa dikosongkan.</small>
             </div>
 

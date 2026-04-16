@@ -68,7 +68,7 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Deskripsi / Uraian Pekerjaan</label>
-                <textarea name="description" rows="4" class="form-control" placeholder="Deskripsi singkat pekerjaan yang dilakukan...">{{ old('description', $project->description) }}</textarea>
+                <textarea name="description" rows="4" class="form-control tinymce-editor" placeholder="Deskripsi singkat pekerjaan yang dilakukan...">{{ old('description', $project->description) }}</textarea>
             </div>
 
             <div class="form-section-title mt-4">Dokumentasi & Status</div>

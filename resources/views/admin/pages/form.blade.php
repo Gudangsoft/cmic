@@ -8,11 +8,7 @@
 @endsection
 
 @push('styles')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.css">
 <style>
-    .CodeMirror { font-size: 14px; min-height: 300px; border-radius: 0 0 8px 8px; }
-    .editor-toolbar { border-radius: 8px 8px 0 0; }
-    .EasyMDEContainer { border-radius: 8px; }
     .preview-box { border: 1px solid #d1d5db; border-radius: 8px; padding: 16px; min-height: 80px; background: #f8fafc; }
     /* Page content frontend preview styles */
     .page-content-preview h1,.page-content-preview h2,.page-content-preview h3 { color: #003A78; margin-top: 1rem; }
@@ -77,10 +73,9 @@
             <div class="form-card mb-4">
                 <div class="fcard-header">
                     <i class="fas fa-align-left me-2"></i>Konten Halaman
-                    <small class="ms-2 opacity-75 fw-normal">Mendukung Markdown &amp; HTML</small>
                 </div>
                 <div class="fcard-body">
-                    <textarea id="contentEditor" name="content">{{ old('content', $page->content ?? '') }}</textarea>
+                    <textarea id="contentEditor" name="content" class="form-control tinymce-editor">{{ old('content', $page->content ?? '') }}</textarea>
                 </div>
             </div>
 
@@ -165,24 +160,7 @@
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/easymde/dist/easymde.min.js"></script>
-<script>
-// Markdown editor
-var easyMDE = new EasyMDE({
-    element: document.getElementById('contentEditor'),
-    spellChecker: false,
-    autosave: { enabled: false },
-    toolbar: [
-        'bold','italic','heading','|',
-        'quote','unordered-list','ordered-list','|',
-        'link','image','table','|',
-        'preview','side-by-side','fullscreen','|',
-        'guide'
-    ],
-    placeholder: 'Tulis konten halaman di sini... Mendukung Markdown.\n\n## Judul Bagian\n\nIsi konten...',
-});
-
-// Slug auto-generate from title
+<script>// Slug auto-generate from title
 var titleInput = document.getElementById('titleInput');
 var slugInput  = document.getElementById('slugInput');
 var slugPreview = document.getElementById('slugPreview');

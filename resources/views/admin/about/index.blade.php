@@ -27,7 +27,7 @@
             <div class="fcard-header"><i class="fas fa-info-circle me-2"></i>Deskripsi Perusahaan</div>
             <div class="fcard-body">
                 <label class="form-label fw-semibold">Paragraf Tentang Perusahaan</label>
-                <textarea name="company_about" id="companyAboutEditor" class="form-control" rows="6"
+                <textarea name="company_about" id="companyAboutEditor" class="form-control tinymce-editor" rows="6"
                     placeholder="Tulis deskripsi singkat tentang perusahaan...">{{ old('company_about', $settings['company_about'] ?? '') }}</textarea>
                 <small class="text-muted d-block mt-2">Teks ini tampil di bagian utama halaman Tentang Kami. Supports: paragraf, list, bold, italic, alignment.</small>
             </div>
@@ -375,44 +375,6 @@
 @endsection
 
 @push('scripts')
-<!-- CKEditor 5 -->
-<script src="https://cdn.ckeditor.com/ckeditor5/40.0.0/classic/ckeditor.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    ClassicEditor
-        .create(document.querySelector('#companyAboutEditor'), {
-            toolbar: {
-                items: [
-                    'heading',
-                    '|',
-                    'bold', 'italic', 'underline',
-                    '|',
-                    'bulletedList', 'numberedList',
-                    '|',
-                    'alignment',
-                    '|',
-                    'blockQuote',
-                    '|',
-                    'undo', 'redo'
-                ]
-            },
-            heading: {
-                options: [
-                    { model: 'paragraph', title: 'Paragraph' },
-                    { model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2' },
-                    { model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3' }
-                ]
-            }
-        })
-        .catch( error => {
-            console.error( error );
-        });
-});
-</script>
-<style>
-.ck-editor__main { background: #fff !important; }
-.ck-content { font-family: 'Poppins', sans-serif; }
-</style>
 <script>
 /* ── Icon highlight boxes ── */
 function updateIconPreview(key, iconClass) {
