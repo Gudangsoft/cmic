@@ -40,10 +40,22 @@
                 @endif
             </div>
             <div class="col-lg-6">
-                <h2 class="section-title">{{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}</h2>
-                <span class="section-divider d-block mb-4" style="margin:0;"></span>
-                <div class="text-muted" style="line-height:1.8; font-size:15px;">
-                    {!! $siteSettings['company_about'] ?? '<p>PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan profesional yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi.</p>' !!}
+                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif;">
+                    {{-- Decorative quote watermark --}}
+                    <span style="position:absolute;top:-10px;left:18px;font-size:110px;color:rgba(255,255,255,.06);line-height:1;font-family:Georgia,serif;pointer-events:none;user-select:none;">&#8220;</span>
+                    {{-- Header row: quote icon + company name --}}
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;position:relative;">
+                        <span style="font-size:30px;color:var(--cmic-yellow);line-height:1;font-family:Georgia,serif;">&#8220;</span>
+                        <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">
+                            {{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}
+                        </h2>
+                    </div>
+                    {{-- Yellow accent divider --}}
+                    <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;margin-left:42px;"></div>
+                    {{-- About text --}}
+                    <div style="color:rgba(255,255,255,.88);line-height:1.9;font-size:14px;font-weight:400;position:relative;">
+                        {!! $siteSettings['company_about'] ?? '<p>PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan profesional yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi.</p>' !!}
+                    </div>
                 </div>
             </div>
         </div>
