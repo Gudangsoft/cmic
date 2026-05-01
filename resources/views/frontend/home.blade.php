@@ -94,13 +94,24 @@
                 </div>
                 @endif
             </div>
-            <div class="col-lg-6">
-                <h2 class="section-title">Tentang Kami</h2>
-                <span class="section-divider d-block mb-3" style="margin:0 0 20px;"></span>
-                <div class="text-muted">
-                    {!! \App\Models\Setting::get('company_about', 'PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi. Kami berkomitmen memberikan layanan terbaik dengan tenaga ahli berpengalaman.') !!}
+            <div class="col-lg-6 d-flex">
+                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif; width:100%; display:flex; flex-direction:column; justify-content:center;">
+                    {{-- Header: company name --}}
+                    <div style="margin-bottom:14px;position:relative;">
+                        <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">Tentang Kami</h2>
+                    </div>
+                    {{-- Yellow accent divider --}}
+                    <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;"></div>
+                    {{-- About text --}}
+                    <div style="color:rgba(255,255,255,.88);line-height:1.9;font-size:14px;font-weight:400;position:relative;">
+                        {!! \App\Models\Setting::get('company_about', 'PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi. Kami berkomitmen memberikan layanan terbaik dengan tenaga ahli berpengalaman.') !!}
+                    </div>
+                    <div class="mt-4">
+                        <a href="{{ route('tentang') }}" style="display:inline-flex;align-items:center;gap:8px;padding:10px 28px;background:var(--cmic-yellow);color:var(--cmic-dark-blue);border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">
+                            Selengkapnya <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <a href="{{ route('tentang') }}" class="btn btn-cmic mt-3 px-4">Selengkapnya <i class="fas fa-arrow-right ms-2"></i></a>
             </div>
         </div>
     </div>
