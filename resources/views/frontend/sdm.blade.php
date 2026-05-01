@@ -15,11 +15,6 @@
 
 <section class="py-5">
     <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-title">{{ $teamSettings['team_section_title'] ?? 'Tim Profesional Kami' }}</h2>
-            <span class="section-divider"></span>
-            <p class="text-muted">{{ $teamSettings['team_section_subtitle'] ?? 'Didukung oleh tenaga ahli berpengalaman di bidangnya' }}</p>
-        </div>
         @if($members->count())
             @foreach($members as $section => $sectionMembers)
             <div class="mb-5">
