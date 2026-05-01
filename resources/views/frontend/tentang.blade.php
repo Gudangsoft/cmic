@@ -15,22 +15,24 @@
 
 <section class="py-5">
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6">
+        <div class="row g-5 align-items-stretch">
+            <div class="col-lg-6 d-flex">
                 @if(!empty($siteSettings['about_image']))
                     <img src="{{ asset('storage/' . $siteSettings['about_image']) }}"
-                         class="img-fluid rounded shadow-lg" alt="{{ $siteSettings['company_name'] ?? 'PT CMIC' }}"
+                         class="rounded shadow-lg w-100 object-fit-cover"
+                         style="object-fit:cover;min-height:300px;"
+                         alt="{{ $siteSettings['company_name'] ?? 'PT CMIC' }}"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="rounded shadow-lg d-none align-items-center justify-content-center"
-                         style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#0057A8,#003d7a);">
+                    <div class="rounded shadow-lg align-items-center justify-content-center w-100"
+                         style="display:none;background:linear-gradient(135deg,#0057A8,#003d7a);min-height:300px;">
                         <div class="text-center text-white p-4">
                             <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
                             <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
                         </div>
                     </div>
                 @else
-                    <div class="rounded shadow-lg d-flex align-items-center justify-content-center"
-                         style="width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,#0057A8,#003d7a);">
+                    <div class="rounded shadow-lg d-flex align-items-center justify-content-center w-100"
+                         style="background:linear-gradient(135deg,#0057A8,#003d7a);min-height:300px;">
                         <div class="text-center text-white p-4">
                             <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
                             <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
@@ -39,19 +41,16 @@
                     </div>
                 @endif
             </div>
-            <div class="col-lg-6">
-                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif;">
-                    {{-- Decorative quote watermark --}}
-                    <span style="position:absolute;top:-10px;left:18px;font-size:110px;color:rgba(255,255,255,.06);line-height:1;font-family:Georgia,serif;pointer-events:none;user-select:none;">&#8220;</span>
-                    {{-- Header row: quote icon + company name --}}
-                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;position:relative;">
-                        <span style="font-size:30px;color:var(--cmic-yellow);line-height:1;font-family:Georgia,serif;">&#8220;</span>
+            <div class="col-lg-6 d-flex">
+                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif; width:100%; display:flex; flex-direction:column; justify-content:center;">
+                    {{-- Header: company name --}}
+                    <div style="margin-bottom:14px;position:relative;">
                         <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">
                             {{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}
                         </h2>
                     </div>
                     {{-- Yellow accent divider --}}
-                    <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;margin-left:42px;"></div>
+                    <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;"></div>
                     {{-- About text --}}
                     <div style="color:rgba(255,255,255,.88);line-height:1.9;font-size:14px;font-weight:400;position:relative;">
                         {!! $siteSettings['company_about'] ?? '<p>PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan profesional yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi.</p>' !!}
