@@ -113,7 +113,7 @@
         </div>
         <div class="row g-4">
             {{-- Visi --}}
-            <div class="col-lg-6">
+            <div class="col-12">
                 <div class="h-100 text-center p-5 rounded-3 position-relative overflow-hidden"
                      style="background: linear-gradient(145deg, var(--cmic-dark-blue) 0%, var(--cmic-blue) 100%); box-shadow: 0 6px 24px rgba(0,57,120,0.22);">
                     <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
@@ -126,7 +126,7 @@
                 </div>
             </div>
             {{-- Misi --}}
-            <div class="col-lg-6">
+            <div class="col-12">
                 <div class="h-100 p-5 rounded-3 position-relative overflow-hidden"
                      style="background: linear-gradient(145deg, var(--cmic-blue) 0%, var(--cmic-dark-blue) 100%); box-shadow: 0 6px 24px rgba(0,57,120,0.22);">
                     <div style="position:absolute;bottom:-40px;left:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
@@ -140,7 +140,7 @@
                     @php
                         $misiLines = array_filter(array_map('trim', explode("\n", $siteSettings['about_misi'] ?? "Memberikan layanan konsultansi berkualitas tinggi\nMengembangkan sumber daya manusia yang kompeten\nMenerapkan teknologi terkini dalam setiap proyek\nMenjaga kepercayaan klien dengan profesionalisme tinggi")));
                     @endphp
-                    <ul class="ps-0 m-0" style="list-style:none;">
+                    <ul class="ps-0 m-0 mx-auto" style="list-style:none; display:table;">
                         @foreach($misiLines as $poin)
                         <li class="mb-3 d-flex align-items-start gap-2">
                             <i class="fas fa-check-circle flex-shrink-0 mt-1" style="color:var(--cmic-yellow);"></i>
