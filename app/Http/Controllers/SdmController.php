@@ -10,7 +10,13 @@ class SdmController extends Controller
 {
     public function index()
     {
-        $members = TeamMember::active()->get()->groupBy('section');
+        $sectionOrder = ['Direksi', 'Manajemen', 'Tenaga Ahli', 'Staf Pendukung'];
+        $members = TeamMember::active()->get()
+            ->groupBy('section')
+            ->sortBy(function ($items, $section) use ($sectionOrder) {
+                $idx = array_search($section, $sectionOrder);
+                return $idx === false ? 99 : $idx;
+            });
         $teamSettings = [
             'team_section_title'    => Setting::get('team_section_title', 'Tim Profesional Kami'),
             'team_section_subtitle' => Setting::get('team_section_subtitle', 'Didukung oleh tenaga ahli berpengalaman di bidangnya'),

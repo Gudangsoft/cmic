@@ -22,14 +22,12 @@
         </div>
         @if($members->count())
             @foreach($members as $section => $sectionMembers)
-            @if($section !== 'Tenaga Ahli')
             <div class="mb-5">
-                <h4 class="mb-4" style="color:#fff;background:#1a5276;display:inline-block;padding:8px 24px;border-radius:6px;font-size:16px;font-weight:600;">
-                    {{ $section ?: 'Lainnya' }}
-                </h4>
-            @else
-            <div class="mb-5">
-            @endif
+                <div class="text-center mb-4">
+                    <h4 style="display:inline-block;color:#fff;background:var(--cmic-dark-blue);padding:8px 32px;border-radius:6px;font-size:16px;font-weight:600;letter-spacing:.3px;">
+                        {{ $section ?: 'Lainnya' }}
+                    </h4>
+                </div>
                 <div class="row g-4 justify-content-center">
                     @foreach($sectionMembers as $member)
                     <div class="col-lg-3 col-md-4 col-6">
