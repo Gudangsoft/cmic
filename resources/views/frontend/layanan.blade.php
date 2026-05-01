@@ -70,7 +70,7 @@
                     @endif
                     <div class="card-body p-4">
                         <h5 class="card-title">{{ $service->title }}</h5>
-                        <p class="card-text text-muted" style="font-size:14px;">{{ $service->description }}</p>
+                        <div class="card-text text-muted" style="font-size:14px;">{!! $service->description !!}</div>
 
                         {{-- Galeri Foto --}}
                         @if(!empty($service->gallery) && count($service->gallery) > 0)

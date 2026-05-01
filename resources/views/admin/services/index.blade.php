@@ -166,7 +166,7 @@
                                 </span>
                             </div>
                         </div>
-                        <p style="font-size:13px;color:#64748b;margin-bottom:8px;line-height:1.5;">{{ Str::limit($s->description, 150) }}</p>
+                        <p style="font-size:13px;color:#64748b;margin-bottom:8px;line-height:1.5;">{{ Str::limit(strip_tags($s->description), 150) }}</p>
                     </div>
                     <div class="d-flex align-items-center gap-2">
                         @if($galleryCount > 0)
@@ -272,7 +272,7 @@
                         </div>
                     </div>
                     @if($k->description)
-                    <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5;">{{ Str::limit($k->description, 80) }}</p>
+                    <p style="font-size:12px;color:#64748b;margin-bottom:10px;line-height:1.5;">{{ Str::limit(strip_tags($k->description), 80) }}</p>
                     @endif
                     <div class="d-flex gap-1 justify-content-end">
                         <a href="{{ route('admin.keunggulan.edit', $k) }}" class="btn btn-sm btn-outline-primary px-2" title="Edit"><i class="fas fa-pen me-1"></i>Edit</a>
