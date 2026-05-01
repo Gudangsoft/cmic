@@ -50,6 +50,49 @@
     </div>
 </section>
 
+{{-- Blue Stats Box --}}
+<section style="background: linear-gradient(135deg, var(--cmic-dark-blue) 0%, var(--cmic-blue) 100%); padding: 56px 0; position:relative; overflow:hidden;">
+    {{-- Decorative circles --}}
+    <div style="position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
+    <div style="position:absolute;bottom:-80px;left:-40px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.03);pointer-events:none;"></div>
+    <div class="container position-relative">
+        <div class="row g-0 text-center text-white">
+            <div class="col-6 col-md-3">
+                <div class="py-3 px-2" style="border-right:1px solid rgba(255,255,255,.15);">
+                    <div style="font-size:2.8rem;font-weight:800;color:var(--cmic-yellow);line-height:1;font-family:inherit;">
+                        {{ $siteSettings['stat_years'] ?? '10' }}<span style="font-size:1.8rem;">+</span>
+                    </div>
+                    <div class="mt-2" style="font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.85;font-weight:600;">Tahun Pengalaman</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="py-3 px-2" style="border-right:1px solid rgba(255,255,255,.15);">
+                    <div style="font-size:2.8rem;font-weight:800;color:var(--cmic-yellow);line-height:1;">
+                        {{ $siteSettings['stat_projects'] ?? '150' }}<span style="font-size:1.8rem;">+</span>
+                    </div>
+                    <div class="mt-2" style="font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.85;font-weight:600;">Proyek Selesai</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="py-3 px-2" style="border-right:1px solid rgba(255,255,255,.15);">
+                    <div style="font-size:2.8rem;font-weight:800;color:var(--cmic-yellow);line-height:1;">
+                        {{ $siteSettings['stat_experts'] ?? '50' }}<span style="font-size:1.8rem;">+</span>
+                    </div>
+                    <div class="mt-2" style="font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.85;font-weight:600;">Tenaga Ahli</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="py-3 px-2">
+                    <div style="font-size:2.8rem;font-weight:800;color:var(--cmic-yellow);line-height:1;">
+                        {{ $siteSettings['stat_clients'] ?? '100' }}<span style="font-size:1.8rem;">+</span>
+                    </div>
+                    <div class="mt-2" style="font-size:12px;letter-spacing:1px;text-transform:uppercase;opacity:.85;font-weight:600;">Klien Puas</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Visi Misi -->
 <section class="py-5" style="background:var(--cmic-light-bg)">
     <div class="container">
