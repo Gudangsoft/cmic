@@ -80,12 +80,12 @@
 <!-- Tentang Kami Preview -->
 <section class="py-5 bg-light">
     <div class="container">
-        <div class="row align-items-center g-4">
-            <div class="col-lg-6">
+        <div class="row align-items-stretch g-4">
+            <div class="col-lg-6 d-flex">
                 @if(!empty($siteSettings['about_image']))
-                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="img-fluid rounded shadow" alt="Tentang CMIC">
+                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="rounded shadow w-100" style="object-fit:cover;" alt="Tentang CMIC">
                 @else
-                <div class="d-flex align-items-center justify-content-center rounded shadow"
+                <div class="d-flex align-items-center justify-content-center rounded shadow w-100"
                      style="min-height:300px; background:linear-gradient(135deg,#003A78,#0057A8);">
                     <div class="text-center text-white px-4">
                         <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
