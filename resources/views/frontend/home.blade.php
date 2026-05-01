@@ -83,7 +83,7 @@
         <div class="row align-items-stretch g-4">
             <div class="col-lg-6 d-flex">
                 @if(!empty($siteSettings['about_image']))
-                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="rounded shadow w-100" style="object-fit:cover;" alt="Tentang CMIC">
+                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="img-fluid rounded shadow w-100" alt="Tentang CMIC">
                 @else
                 <div class="d-flex align-items-center justify-content-center rounded shadow w-100"
                      style="min-height:300px; background:linear-gradient(135deg,#003A78,#0057A8);">
