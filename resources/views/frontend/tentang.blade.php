@@ -13,48 +13,45 @@
     </div>
 </div>
 
-<section class="py-5">
-    <div class="container">
-        <div class="row g-5 align-items-stretch">
-            <div class="col-lg-6 d-flex">
-                @if(!empty($siteSettings['about_image']))
-                    <img src="{{ asset('storage/' . $siteSettings['about_image']) }}"
-                         class="rounded shadow-lg w-100"
-                         style="object-fit:contain;height:100%;max-height:600px;"
-                         alt="{{ $siteSettings['company_name'] ?? 'PT CMIC' }}"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-                    <div class="rounded shadow-lg align-items-center justify-content-center w-100"
-                         style="display:none;background:linear-gradient(135deg,#0057A8,#003d7a);min-height:300px;">
-                        <div class="text-center text-white p-4">
-                            <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
-                            <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
-                        </div>
+<section class="p-0" style="overflow:hidden;">
+    <div class="row g-0 align-items-stretch">
+        {{-- Kolom foto: full-bleed tanpa frame --}}
+        <div class="col-lg-6 d-flex">
+            @if(!empty($siteSettings['about_image']))
+                <img src="{{ asset('storage/' . $siteSettings['about_image']) }}"
+                     style="width:100%;height:100%;object-fit:cover;display:block;min-height:320px;"
+                     alt="{{ $siteSettings['company_name'] ?? 'PT CMIC' }}"
+                     onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+                <div style="display:none;width:100%;min-height:320px;background:linear-gradient(135deg,#0057A8,#003d7a);align-items:center;justify-content:center;">
+                    <div class="text-center text-white p-4">
+                        <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
+                        <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
                     </div>
-                @else
-                    <div class="rounded shadow-lg d-flex align-items-center justify-content-center w-100"
-                         style="background:linear-gradient(135deg,#0057A8,#003d7a);min-height:300px;">
-                        <div class="text-center text-white p-4">
-                            <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
-                            <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
-                            <div class="small opacity-75 mt-1">Upload foto di menu Tentang Kami</div>
-                        </div>
+                </div>
+            @else
+                <div style="width:100%;min-height:320px;background:linear-gradient(135deg,#0057A8,#003d7a);display:flex;align-items:center;justify-content:center;">
+                    <div class="text-center text-white p-4">
+                        <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
+                        <div class="fw-bold fs-5">{{ $siteSettings['company_name'] ?? 'PT. CMIC' }}</div>
+                        <div class="small opacity-75 mt-1">Upload foto di menu Tentang Kami</div>
                     </div>
-                @endif
-            </div>
-            <div class="col-lg-6 d-flex">
-                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif; width:100%; display:flex; flex-direction:column; justify-content:center;">
-                    {{-- Header: company name --}}
-                    <div style="margin-bottom:14px;position:relative;">
-                        <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">
-                            {{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}
-                        </h2>
-                    </div>
-                    {{-- Yellow accent divider --}}
-                    <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;"></div>
-                    {{-- About text --}}
-                    <div style="color:rgba(255,255,255,.88);line-height:1.9;font-size:14px;font-weight:400;position:relative;">
-                        {!! $siteSettings['company_about'] ?? '<p>PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan profesional yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi.</p>' !!}
-                    </div>
+                </div>
+            @endif
+        </div>
+        {{-- Kolom blue box --}}
+        <div class="col-lg-6 d-flex">
+            <div style="background:var(--cmic-dark-blue);padding:48px 52px;position:relative;overflow:hidden;font-family:'Poppins',sans-serif;width:100%;display:flex;flex-direction:column;justify-content:center;">
+                {{-- Header: company name --}}
+                <div style="margin-bottom:14px;position:relative;">
+                    <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">
+                        {{ $siteSettings['company_name'] ?? 'PT. Citra Muda Indo Consultant' }}
+                    </h2>
+                </div>
+                {{-- Yellow accent divider --}}
+                <div style="width:48px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin-bottom:22px;"></div>
+                {{-- About text --}}
+                <div style="color:rgba(255,255,255,.88);line-height:1.9;font-size:14px;font-weight:400;position:relative;">
+                    {!! $siteSettings['company_about'] ?? '<p>PT. Citra Muda Indo Consultant (CMIC) adalah perusahaan konsultan profesional yang bergerak di bidang perencanaan, pengawasan, dan manajemen konstruksi.</p>' !!}
                 </div>
             </div>
         </div>
