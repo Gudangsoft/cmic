@@ -80,12 +80,12 @@
 <!-- Tentang Kami Preview -->
 <section class="py-5 bg-light">
     <div class="container">
-        <div class="row align-items-stretch g-4">
-            <div class="col-lg-6 d-flex">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
                 @if(!empty($siteSettings['about_image']))
-                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="img-fluid rounded shadow w-100" alt="Tentang CMIC">
+                <img src="{{ asset('storage/'.$siteSettings['about_image']) }}" class="img-fluid rounded shadow" alt="Tentang CMIC">
                 @else
-                <div class="d-flex align-items-center justify-content-center rounded shadow w-100"
+                <div class="d-flex align-items-center justify-content-center rounded shadow"
                      style="min-height:300px; background:linear-gradient(135deg,#003A78,#0057A8);">
                     <div class="text-center text-white px-4">
                         <i class="fas fa-building fa-4x mb-3 opacity-75"></i>
@@ -94,8 +94,8 @@
                 </div>
                 @endif
             </div>
-            <div class="col-lg-6 d-flex">
-                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif; width:100%; display:flex; flex-direction:column; justify-content:center;">
+            <div class="col-lg-6">
+                <div style="background: var(--cmic-dark-blue); border-radius: 16px; padding: 40px 44px; position: relative; overflow: hidden; box-shadow: 0 10px 40px rgba(0,40,100,0.22); font-family: 'Poppins', sans-serif;">
                     {{-- Header: company name --}}
                     <div style="margin-bottom:14px;position:relative;">
                         <h2 style="margin:0;font-size:20px;font-weight:700;color:#ffffff;letter-spacing:.3px;">Tentang Kami</h2>
