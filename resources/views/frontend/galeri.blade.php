@@ -94,7 +94,7 @@
 
         {{-- ====== Named Albums (Level 1 cards) ====== --}}
         @if($namedAlbums->isNotEmpty())
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             @foreach($namedAlbums as $albumName => $subAlbums)
             @php
                 $allItems   = $subAlbums->flatten();
@@ -137,7 +137,7 @@
         @if($namedAlbums->isNotEmpty())
         <h5 class="mt-5 mb-3" style="color:#64748b;font-size:15px;"><i class="fas fa-folder-open me-2"></i>Galeri Lainnya</h5>
         @endif
-        <div class="row g-4">
+        <div class="row g-4 justify-content-center">
             @foreach($noAlbumSubs as $subTitle => $items)
             @php
                 $firstItem  = $items->first();

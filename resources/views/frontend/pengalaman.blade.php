@@ -71,6 +71,7 @@
                    onmouseleave="this.style.transform='';this.style.boxShadow='0 4px 12px {{ $bg }}55'">
                     <i class="fas fa-check-circle" style="font-size:20px;opacity:.85;"></i>
                     <span style="font-weight:700;font-size:13.5px;line-height:1.4;">{{ $jenis->nama }}</span>
+                    <span style="margin-top:8px;padding:4px 16px;border:1.5px solid rgba(255,255,255,.7);border-radius:20px;font-size:11px;font-weight:600;letter-spacing:.4px;color:rgba(255,255,255,.95);">Lihat Selengkapnya</span>
                 </a>
             </div>
             @endforeach
