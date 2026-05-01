@@ -118,17 +118,27 @@
         <div class="row g-4">
             @foreach($services->take(3) as $service)
             <div class="col-lg-4 col-md-6">
-                <div class="card card-service h-100 p-4">
-                    <div class="text-center">
+                <div class="h-100 text-center p-4 rounded-3 position-relative overflow-hidden"
+                     style="background: linear-gradient(145deg, var(--cmic-dark-blue) 0%, var(--cmic-blue) 100%);
+                            box-shadow: 0 6px 24px rgba(0,57,120,0.22);
+                            transition: transform .25s, box-shadow .25s; border: none; cursor:default;"
+                     onmouseenter="this.style.transform='translateY(-6px)';this.style.boxShadow='0 14px 36px rgba(0,57,120,0.32)'"
+                     onmouseleave="this.style.transform='';this.style.boxShadow='0 6px 24px rgba(0,57,120,0.22)'">
+                    {{-- Decorative circle bg --}}
+                    <div style="position:absolute;top:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
+                    <div style="position:absolute;bottom:-40px;left:-20px;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
+                    {{-- Icon --}}
+                    <div style="width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;border:2px solid rgba(255,255,255,.25);">
                         @if($service->image)
-                        <img src="{{ asset('storage/'.$service->image) }}" class="mb-3" style="height:70px; object-fit:contain;" alt="{{ $service->title }}">
+                        <img src="{{ asset('storage/'.$service->image) }}" style="height:38px;object-fit:contain;filter:brightness(0) invert(1);" alt="{{ $service->title }}">
                         @else
-                        <div class="icon-box mb-3">
-                            <i class="fas {{ $service->icon ?? 'fa-building' }}"></i>
-                        </div>
+                        <i class="fas {{ $service->icon ?? 'fa-building' }} fa-lg text-white"></i>
                         @endif
                     </div>
-                    <h5 class="card-title text-center">{{ $service->title }}</h5>
+                    {{-- Title --}}
+                    <h5 style="color:#ffffff;font-weight:700;font-size:16px;margin-bottom:10px;position:relative;">{{ $service->title }}</h5>
+                    {{-- Yellow accent bar --}}
+                    <div style="width:36px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin:0 auto;"></div>
                 </div>
             </div>
             @endforeach

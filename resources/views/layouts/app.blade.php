@@ -256,8 +256,8 @@
         .gallery-item { position: relative; cursor: pointer; overflow: hidden; border-radius: 6px; }
 
         /* Client logo */
-        .client-logo { filter: grayscale(80%); opacity: 0.7; transition: all 0.3s; max-height: 70px; }
-        .client-logo:hover { filter: grayscale(0); opacity: 1; }
+        .client-logo { filter: none; opacity: 1; transition: transform 0.3s; max-height: 70px; }
+        .client-logo:hover { transform: scale(1.08); }
 
         /* Contact */
         .contact-info-box { background: var(--cmic-blue); color: #fff; padding: 30px; border-radius: 10px; }

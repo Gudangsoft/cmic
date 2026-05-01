@@ -112,31 +112,40 @@
             <span class="section-divider"></span>
         </div>
         <div class="row g-4">
-            <div class="col-12">
-                <div class="card h-100 border-0 shadow-sm p-4 text-center">
-                    <div class="d-flex flex-column align-items-center mb-3">
-                        <div style="width:50px;height:50px;background:var(--cmic-blue);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                            <i class="fas fa-eye text-white fa-lg"></i>
-                        </div>
-                        <h4 class="mt-2 mb-0" style="color:var(--cmic-blue); font-weight:700;">Visi</h4>
+            {{-- Visi --}}
+            <div class="col-lg-6">
+                <div class="h-100 text-center p-5 rounded-3 position-relative overflow-hidden"
+                     style="background: linear-gradient(145deg, var(--cmic-dark-blue) 0%, var(--cmic-blue) 100%); box-shadow: 0 6px 24px rgba(0,57,120,0.22);">
+                    <div style="position:absolute;top:-30px;right:-30px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none;"></div>
+                    <div style="width:68px;height:68px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;border:2px solid rgba(255,255,255,.3);">
+                        <i class="fas fa-eye text-white fa-lg"></i>
                     </div>
-                    <p class="text-muted">{{ $siteSettings['about_visi'] ?? 'Menjadi perusahaan konsultan terkemuka di Indonesia yang memberikan solusi terbaik dalam perencanaan dan pengawasan konstruksi dengan mengutamakan kualitas, inovasi, dan integritas.' }}</p>
+                    <h4 style="color:#fff;font-weight:700;margin-bottom:12px;">Visi</h4>
+                    <div style="width:36px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin:0 auto 20px;"></div>
+                    <p style="color:rgba(255,255,255,.9);line-height:1.85;margin:0;font-size:14px;">{{ $siteSettings['about_visi'] ?? 'Menjadi perusahaan konsultan terkemuka di Indonesia yang memberikan solusi terbaik dalam perencanaan dan pengawasan konstruksi dengan mengutamakan kualitas, inovasi, dan integritas.' }}</p>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="card h-100 border-0 shadow p-5 text-center" style="background: linear-gradient(135deg, rgba(0,87,168,0.05), rgba(245,197,24,0.05)); border: 1px solid rgba(245,197,24,0.2);">
-                    <div class="d-flex flex-column align-items-center mb-3">
-                        <div style="width:60px;height:60px;background:var(--cmic-yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 4px 12px rgba(245,197,24,0.3);">
-                            <i class="fas fa-bullseye text-dark fa-lg"></i>
+            {{-- Misi --}}
+            <div class="col-lg-6">
+                <div class="h-100 p-5 rounded-3 position-relative overflow-hidden"
+                     style="background: linear-gradient(145deg, var(--cmic-blue) 0%, var(--cmic-dark-blue) 100%); box-shadow: 0 6px 24px rgba(0,57,120,0.22);">
+                    <div style="position:absolute;bottom:-40px;left:-20px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none;"></div>
+                    <div class="text-center">
+                        <div style="width:68px;height:68px;background:var(--cmic-yellow);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 16px rgba(245,197,24,0.4);">
+                            <i class="fas fa-bullseye fa-lg" style="color:var(--cmic-dark-blue);"></i>
                         </div>
-                        <h4 class="mt-2 mb-0" style="color:var(--cmic-blue); font-weight:700;">Misi</h4>
+                        <h4 style="color:#fff;font-weight:700;margin-bottom:12px;">Misi</h4>
+                        <div style="width:36px;height:3px;background:var(--cmic-yellow);border-radius:2px;margin:0 auto 22px;"></div>
                     </div>
                     @php
                         $misiLines = array_filter(array_map('trim', explode("\n", $siteSettings['about_misi'] ?? "Memberikan layanan konsultansi berkualitas tinggi\nMengembangkan sumber daya manusia yang kompeten\nMenerapkan teknologi terkini dalam setiap proyek\nMenjaga kepercayaan klien dengan profesionalisme tinggi")));
                     @endphp
-                    <ul class="ps-0 mx-auto text-start" style="list-style:none; display:table;">
+                    <ul class="ps-0 m-0" style="list-style:none;">
                         @foreach($misiLines as $poin)
-                        <li class="mb-2"><i class="fas fa-check me-2" style="color:var(--cmic-yellow); font-weight:700;"></i><span style="color:var(--cmic-blue); font-weight:500;">{{ $poin }}</span></li>
+                        <li class="mb-3 d-flex align-items-start gap-2">
+                            <i class="fas fa-check-circle flex-shrink-0 mt-1" style="color:var(--cmic-yellow);"></i>
+                            <span style="color:rgba(255,255,255,.9);font-size:14px;line-height:1.75;">{{ $poin }}</span>
+                        </li>
                         @endforeach
                     </ul>
                 </div>
