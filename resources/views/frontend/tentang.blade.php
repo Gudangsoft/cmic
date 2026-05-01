@@ -19,8 +19,8 @@
             <div class="col-lg-6 d-flex">
                 @if(!empty($siteSettings['about_image']))
                     <img src="{{ asset('storage/' . $siteSettings['about_image']) }}"
-                         class="rounded shadow-lg w-100 object-fit-cover"
-                         style="object-fit:cover;min-height:300px;"
+                         class="rounded shadow-lg w-100"
+                         style="object-fit:contain;height:100%;max-height:600px;"
                          alt="{{ $siteSettings['company_name'] ?? 'PT CMIC' }}"
                          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
                     <div class="rounded shadow-lg align-items-center justify-content-center w-100"
