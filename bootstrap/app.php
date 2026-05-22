@@ -17,6 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->encryptCookies(except: ['maintenance_bypass']);
         $middleware->alias([
             'log.activity' => \App\Http\Middleware\LogAdminActivity::class,
+            'admin.only'   => \App\Http\Middleware\EnsureIsAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {

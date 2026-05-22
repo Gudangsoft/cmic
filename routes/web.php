@@ -35,7 +35,20 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::post('/logout', [\App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['auth', 'log.activity'])->group(function () {
-        Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+        // Dashboard: viewer mendapat tampilan khusus, admin mendapat full dashboard
+        Route::get('/', function () {
+            if (auth()->user()->isViewer()) {
+                return view('admin.viewer_dashboard');
+            }
+            return app(\App\Http\Controllers\Admin\DashboardController::class)->index();
+        })->name('dashboard');
+
+        // Manajemen Pengguna (admin only)
+        Route::middleware('admin.only')->group(function () {
+            Route::resource('users', \App\Http\Controllers\Admin\UserController::class)->except('show');
+        });
+        // Semua route berikut hanya untuk Administrator
+        Route::middleware('admin.only')->group(function () {
         Route::resource('sliders', \App\Http\Controllers\Admin\SliderController::class)->except('show');
         Route::resource('services', \App\Http\Controllers\Admin\ServiceController::class)->except('show');
         Route::put('services-intro', [\App\Http\Controllers\Admin\ServiceController::class, 'updateIntro'])->name('services.updateIntro');
@@ -83,5 +96,6 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::resource('pengalaman-proyek', \App\Http\Controllers\Admin\PengalamanProyekController::class)->except('show');
         Route::post('pengalaman-proyek/{pengalamanProyek}/toggle', [\App\Http\Controllers\Admin\PengalamanProyekController::class, 'toggleActive'])->name('pengalaman-proyek.toggle');
         Route::delete('pengalaman-proyek/{pengalamanProyek}/quick-destroy', [\App\Http\Controllers\Admin\PengalamanProyekController::class, 'quickDestroy'])->name('pengalaman-proyek.quick-destroy');
+        }); // end admin.only
     });
 });

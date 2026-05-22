@@ -129,6 +129,7 @@
     <div class="sidebar-body">
         <div class="nav-section">Utama</div>
         <a href="{{ route('admin.dashboard') }}" class="sidebar-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}"><i class="fas fa-chart-line"></i> Dashboard</a>
+        @if(auth()->user()->isAdmin())
         <div class="nav-section">Konten Website</div>
         <a href="{{ route('admin.sliders.index') }}" class="sidebar-link {{ request()->routeIs('admin.sliders.*') ? 'active' : '' }}"><i class="fas fa-images"></i> Slider / Banner</a>
         <a href="{{ route('admin.services.index') }}" class="sidebar-link {{ request()->routeIs('admin.services.*') ? 'active' : '' }}"><i class="fas fa-cogs"></i> Lingkup Layanan</a>
@@ -155,10 +156,14 @@
         <a href="{{ route('admin.pages.index') }}" class="sidebar-link {{ request()->routeIs('admin.pages.*') ? 'active' : '' }}"><i class="fas fa-file-alt"></i> Halaman / Pages</a>
         <div class="nav-section">Komunikasi</div>
         <a href="{{ route('admin.contacts.index') }}" class="sidebar-link {{ request()->routeIs('admin.contacts.*') ? 'active' : '' }}"><i class="fas fa-envelope"></i> Pesan Masuk @if($unreadCount > 0)<span class="badge-pill">{{ $unreadCount }}</span>@endif</a>
+        @endif {{-- end isAdmin content section --}}
         <div class="nav-section">Sistem</div>
+        @if(auth()->user()->isAdmin())
+        <a href="{{ route('admin.users.index') }}" class="sidebar-link {{ request()->routeIs('admin.users.*') ? 'active' : '' }}"><i class="fas fa-users-cog"></i> Manajemen Pengguna</a>
         <a href="{{ route('admin.settings.index') }}" class="sidebar-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"><i class="fas fa-sliders-h"></i> Pengaturan</a>
         <a href="{{ route('admin.account.edit') }}" class="sidebar-link {{ request()->routeIs('admin.account.*') ? 'active' : '' }}"><i class="fas fa-user-cog"></i> Pengaturan Akun</a>
         <a href="{{ route('admin.activity-logs.index') }}" class="sidebar-link {{ request()->routeIs('admin.activity-logs.*') ? 'active' : '' }}"><i class="fas fa-history"></i> Log Aktivitas</a>
+        @endif
         <a href="{{ route('home') }}" target="_blank" class="sidebar-link"><i class="fas fa-external-link-alt"></i> Lihat Website</a>
     </div>
     <div class="sidebar-footer">
@@ -166,7 +171,7 @@
             <div class="avatar">{{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}</div>
             <div>
                 <div class="user-name">{{ auth()->user()->name ?? 'Admin' }}</div>
-                <div class="user-role">Administrator</div>
+                <div class="user-role">{{ auth()->user()->isViewer() ? 'Viewer' : 'Administrator' }}</div>
             </div>
             <form action="{{ route('admin.logout') }}" method="POST" class="ms-auto">
                 @csrf
