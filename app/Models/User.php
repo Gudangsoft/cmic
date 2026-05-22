@@ -26,7 +26,8 @@ class User extends Authenticatable
 
     public function isAdmin(): bool
     {
-        return $this->role === 'admin';
+        // null = kolom belum ada di DB (migration belum jalan) → treat as admin
+        return $this->role === null || $this->role === 'admin';
     }
 
     public function isViewer(): bool
